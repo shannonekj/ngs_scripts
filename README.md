@@ -8,6 +8,7 @@ scripts I use a lot
 * barcodes_sbf1.csv - comma separated list of Sbf1 barcodes
 * BarcodeSplitList3Files.pl = perl script to **split lanes** based on *given* barcode
 * BCsplitBestRadPE2.pl = perl script to split each lane by wells via inline barcode. **NOTE** right now requires barcodes to be given in line––make sure the barcodes match the RE
+* RUN_alignment_RAD.slurm = slurm script to submit for aligning RAD PE data
 * splitRAD_Pst1.sh = shell script to split lanes and barcodes of RAD data prepped with RE=**Pst1**
 * splitRAD_Sbf1.sh = shell script to split lanes and barcodes of RAD data prepped with RE=**Sbf1**
 

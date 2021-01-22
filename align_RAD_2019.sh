@@ -1,6 +1,7 @@
 #!/bin/bash -l
 
 # This script will align a list of files to a reference genome
+## Downloaded from https://raw.githubusercontent.com/shannonekj/ngs_scripts/master/align_RAD_2019.sh
 
 ###############
 ###  SETUP  ###

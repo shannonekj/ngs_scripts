@@ -52,7 +52,7 @@ reference="/group/millermrgrp2/shannon/projects/assembly_genome_Hypomesus-transp
 #[ -f ${ref_short}.sa ] || bwa index ${ref_short}; sleep 1m
 
 
-# make list of individuals
+# make list of individuals to align
 cd ${data_dir}
 rm -f ${out_dir}/list
 for i in ${lib_prefix}??
@@ -78,8 +78,10 @@ do
 	cd ${data_dir}
 done
 
-# submit list to launch align scripts
-bash ${script_dir}/align_2019.sh ${out_dir}/list ${reference} ${out_dir}
+# submit list to alignment script
+cd ${script_dir}
+[ -f align_RAD_2019.sh ] || wget https://raw.githubusercontent.com/shannonekj/ngs_scripts/master/align_RAD_2019.sh
+bash ${script_dir}/align_RAD_2019.sh ${out_dir}/list ${reference} ${out_dir}
 
 
 

@@ -13,6 +13,8 @@ echo List : ${list}
 echo Reference Genome : ${ref}
 echo Output Directory : ${out}
 
+
+# create run script for each individual
 cd ${out}
 wc=$(wc -l ${list} | awk '{print $1}')
 x=1
@@ -61,10 +63,10 @@ done
 
 cat << readme >> ${out}/README
 This directory contains:
-	${list}
-		A list of sequence files to be aligned to ${ref}
+	list == A list of sequence files to be aligned to ${ref}
 	*.sort-n.fixmate-m.bam == aligned, sorted and fixmated bams
 	*.sort-n.fixmate-m.sort.markdup-r.bam == aligned, sorted, fixmated and markdup bams
 	*.sort-n.fixmate-m.sort.markdup-r.bam.bai == indexed bam file
+    *.sh == alignment script for each individual
 readme
 

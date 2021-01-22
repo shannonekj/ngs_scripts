@@ -14,6 +14,16 @@ echo List : ${list}
 echo Reference Genome : ${ref}
 echo Output Directory : ${out}
 
+# make index for reference genome
+## get shortened name
+ref_short=$(echo ${ref} | rev | cut -f1 -d/ | rev)
+## make symbolic link to reference genome
+[ -d ${out}/ref_genome ] || mkdir -p ${out}/ref_genome
+cd ${out}/ref_genome
+[ -h ${ref_short} ] || ln -s ${ref} ${ref_short}
+## index reference genome
+[ -f ${ref_short}.sa ] || bwa index ${ref_short}; sleep 1m
+
 
 # create run script for each individual
 cd ${out}
@@ -41,7 +51,7 @@ do
 #SBATCH --mem=8G
 
 echo $(date +%D' '%T)  Now aligning ${c3}
-bwa mem $ref ${c1} ${c2} | samtools view -Sb - | samtools sort -n - | samtools fixmate -m - ${out}/${c3}.sort-n.fixmate-m.bam
+bwa mem ${out}/ref_genome/${ref_short} ${c1} ${c2} | samtools view -Sb - | samtools sort -n - | samtools fixmate -m - ${out}/${c3}.sort-n.fixmate-m.bam
 echo Complete!
 echo ""
 

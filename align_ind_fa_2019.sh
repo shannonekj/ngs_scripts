@@ -1,5 +1,6 @@
 #!/bin/bash -l
 
+# last update: 25 january 2021
 # This script will align a list of fa files to a reference genome
 
 ###############
@@ -37,7 +38,7 @@ do
 #SBATCH --mem=8G
 
 echo $(date +%D' '%T)  Now aligning ${c2}
-bwa mem $ref ${c1} | samtools view -Sb - | samtools sort -n - ${out}/${c2}.sort-n.bam
+bwa mem $ref ${c1} | samtools view -Sb - | samtools sort -n -o ${out}/${c2}.sort-n.bam
 echo Complete!
 echo ""
 

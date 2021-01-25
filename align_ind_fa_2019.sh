@@ -2,6 +2,9 @@
 
 # last update: 25 january 2021
 # This script will align a list of fa files to a reference genome
+# Please make sure you are using the following versions:
+##  samtools = <=1.9 
+##  htslib = <=1.7
 
 ###############
 ###  SETUP  ###
@@ -38,12 +41,12 @@ do
 #SBATCH --mem=8G
 
 echo $(date +%D' '%T)  Now aligning ${c2}
-bwa mem $ref ${c1} | samtools view -Sb - | samtools sort -n -o ${out}/${c2}.sort-n.bam
+bwa mem $ref ${c1} | samtools view -Sb - | samtools sort -o ${out}/${c2}.sort.bam
 echo Complete!
 echo ""
 
 echo $(date +%D' '%T)  Indexing bam file
-samtools index ${out}/${c2}.sort-n.bam
+samtools index ${out}/${c2}.sort.bam
 echo Complete!
 echo ""
 ALIGN

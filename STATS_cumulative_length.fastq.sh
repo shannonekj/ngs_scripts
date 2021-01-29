@@ -13,6 +13,7 @@ if [ $fileend = 'gz' ]
 then
     zcat $1 | perl -ne '$id=$_; $seq=<>; $zip=<>; $qual=<>; chomp $seq; print length($seq)."\n"' | sort -rn | perl -ne '$len=$_; chomp $len; $all+=$len; print "$len\t$all\n"' > ${2}.cl
 elif [ $fileend = 'fastq' ] || [ $fileend = 'fq' ]
+then
     cat $1 | perl -ne '$id=$_; $seq=<>; $zip=<>; $qual=<>; chomp $seq; print length($seq)."\n"' | sort -rn | perl -ne '$len=$_; chomp $len; $all+=$len; print "$len\t$all\n"' > ${2}.cl
 else
     echo "File does not have one of the following endings: .gz .fastq .fq"

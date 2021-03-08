@@ -1,5 +1,5 @@
 # ngs_scripts
-scripts I use a lot
+Repository for ngs scripts I use regularly.
 
 ## List of scripts
 * align_RAD_2019.sh = alignment of RAD data from R1 and R2 fastq files (markdup, fixmate)

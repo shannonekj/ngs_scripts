@@ -61,8 +61,14 @@ do
 #SBATCH -e ${c3}.j%j.err
 #SBATCH -o ${c3}.j%j.out
 #SBATCH -t 08:00:00
-#SBATCH -p med
+#SBATCH -p high
 #SBATCH --mem=8G
+
+# conda
+## initiate
+. ~/miniconda3/etc/profile.d/conda.sh
+## activate
+conda activate samtools
 
 echo $(date +%D' '%T)  Now aligning ${c3}
 bwa mem ${out}/ref_genome/${ref_short} ${c1} ${c2} | samtools view -Sb - | samtools sort -n - | samtools fixmate -m - ${out}/${c3}.sort-n.fixmate-m.bam

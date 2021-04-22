@@ -1,7 +1,16 @@
 #!/bin/bash -l
 
+# Function: align a given list of files to a given reference genome 
+# NOTE: Must have's to run this script:
+##    1. "samtools" conda environment with the following installed:
+###       -samtools=1.10
+###       -htslib=1.10.2
+###       -bwa=0.7.17-r1188
+##    2. "list" of fastq files to align to reference genome FMT == [ R1 | R2 | prefix ]
+##    3. reference fasta file to align to
 # This script will align a list of files to a reference genome
 ## Downloaded from https://raw.githubusercontent.com/shannonekj/ngs_scripts/master/align_RAD_2019.sh
+
 
 ###############
 ###  SETUP  ###
@@ -9,10 +18,15 @@
 list=$1		# A list of all individuals to align (FMT: R1 | R2 | prefix)
 ref=$2		# Path to reference genome
 out=$3		# Outout directory
-
 echo List : ${list}
 echo Reference Genome : ${ref}
 echo Output Directory : ${out}
+
+# conda
+## initiate
+. ~/miniconda3/etc/profile.d/conda.sh
+## activate
+conda activate samtools
 
 # make index for reference genome
 ## get shortened name

@@ -61,7 +61,7 @@ do
 #SBATCH -e ${c3}.j%j.err
 #SBATCH -o ${c3}.j%j.out
 #SBATCH -t 08:00:00
-#SBATCH -p high
+#SBATCH -p bigmemh
 #SBATCH --mem=8G
 
 # conda
